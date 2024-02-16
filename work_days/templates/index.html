@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
-    <h1>help</h1>
+    <h1>Welcome to Work Days</h1>
+    <div id="redirect">
+        <a href="{{url_for('register')}}">Register</a>
+        <a href="{{url_for('login')}}">Login</a>
+    </div>
 </body>
 </html>
