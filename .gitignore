@@ -15,3 +15,5 @@ dist/
 build/
 *.egg-info/
 project_planning/
+
+look_into_db.py

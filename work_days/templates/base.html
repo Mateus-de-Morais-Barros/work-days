@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <nav id="base_nav">
+        <a id="home_button" href="{{url_for('index')}}">Home</a>
+        <ul>
+            {% if g.user %}
+                <p id="nav_username">{{ g.user['username'] }}</p>
+                <a href="{{url_for('auth.logout')}}">Log Out</a>
+            {% endif %}
+        </ul>
+    </nav>
+    <section id="main_section">
+        {% block content %}{% endblock %}
+    </section>
+</body>
+</html>

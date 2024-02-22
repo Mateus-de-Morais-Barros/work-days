@@ -3,7 +3,7 @@
     --white: #f9f9f9
 }
 
-body {
+#main_section {
     background-color: var(--black);
     color: var(--white);
     display: flex;
@@ -13,34 +13,30 @@ body {
     margin: 0;
     padding: 0;
     height: 100svh;
-    font-size: 62.5%;
 }
 
-#title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-#redirect {
+#base_nav {
+    position:fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
-    height: auto;
-    width: auto;
-    border-radius: 0;
-    padding: 0;
-    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 3rem;
+    padding-top: 1rem;
 }
 
-.index_redirect {
+#home_button, #nav_username {
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     font-size: 1.5rem;
-    height: 3rem;
     width: auto;
     color: var(--white);
 }
 
-a:hover {
+#home_button:hover {
     scale: 1.05;
 }

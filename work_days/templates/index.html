@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-</head>
-<body>
-    <h1>Welcome to Work Days</h1>
+{% extends 'base.html' %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">{% endblock %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content%}
+    <h1 id="title">Welcome to Work Days</h1>
     <div id="redirect">
-        <a href="{{url_for('register')}}">Register</a>
-        <a href="{{url_for('login')}}">Login</a>
+        <a class="index_redirect" href="{{url_for('register')}}">Register</a>
+        <a class="index_redirect" href="{{url_for('login')}}">Login</a>
     </div>
-</body>
-</html>
+{% endblock %}

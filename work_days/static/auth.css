@@ -14,7 +14,7 @@ body {
     height: 100svh;
 }
 
-section {
+.auth_section {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--white);
