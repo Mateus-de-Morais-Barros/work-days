@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">{% endblock %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1 id="title">Dashboard</h1>
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+{% endblock %}

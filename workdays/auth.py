@@ -5,7 +5,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from work_days.db import get_db
+from workdays.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -16,6 +16,10 @@ def register():
         password = request.form['password']
         db = get_db()
         error = None
+
+        # alerta loucura
+        with open('./test/test.txt','w') as f:
+            f.write(f'{username}, {password}')
 
         if not username:
             error = 'Username is required.'
@@ -58,7 +62,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('main.index'))
 
         flash(error)
 

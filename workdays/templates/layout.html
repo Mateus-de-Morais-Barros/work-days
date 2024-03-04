@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <nav id="base_nav">
+        <a id="home_button" href="{{url_for('index')}}">Home</a>
+        
+    {% if g.user %}
+    <ul id="userbox">
+        {% if g.user %}
+            <p class="nav_username">{{ g.user['username'] }}</p>
+            <a class="nav_username" href="{{url_for('auth.logout')}}">Log Out</a>
+        {% endif %}
+    </ul>
+    {% else %}
+    <div id="redirect">
+        <a class="index_redirect" href="{{url_for('auth.register')}}">Register</a>
+        <a class="index_redirect" href="{{url_for('auth.login')}}">Login</a>
+    </div>
+    {% endif %}
+
+    </nav>
+    <section id="main_section">
+        {% block content %}{% endblock %}
+    </section>
+</body>
+</html>

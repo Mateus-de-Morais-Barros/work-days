@@ -1,5 +1,6 @@
 :root {
-    --black: #222;
+    --black: #110F0D;
+    --grey: #222222;
     --white: #f9f9f9
 }
 
@@ -27,4 +28,13 @@ body {
 
 label {
     color: var(--white);
+    font-size: 1rem;
+}
+
+#submit {
+    height: 2rem;
+    width: 100%;
+    background-color: var(--white);
+    border: none;
+    border-radius: 0.1rem;
 }

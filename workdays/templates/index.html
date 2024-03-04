@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'layout.html' %}
 
 {% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">{% endblock %}
 
@@ -6,8 +6,5 @@
 
 {% block content%}
     <h1 id="title">Welcome to Work Days</h1>
-    <div id="redirect">
-        <a class="index_redirect" href="{{url_for('register')}}">Register</a>
-        <a class="index_redirect" href="{{url_for('login')}}">Login</a>
-    </div>
+    <a id="seeGroups" href="{{ url_for('main.dashboard') }}">Go to my groups</a>
 {% endblock %}

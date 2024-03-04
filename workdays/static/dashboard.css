@@ -1,0 +1,8 @@
+#title {
+    font-size: 3rem;
+}
+
+#main_section {
+    justify-content: flex-start;
+    padding-top: 3rem;
+}
