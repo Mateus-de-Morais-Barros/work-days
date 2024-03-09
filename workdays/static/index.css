@@ -1,11 +1,12 @@
 :root {
+    --white: #f9f9f9;
     --black: #110F0D;
     --grey: #222222;
-    --white: #f9f9f9
+    --grey_light: #353535;
+    --grey_dark:#1A1A1A;
 }
 
-
-#title {
+.title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
 }
@@ -22,11 +23,7 @@
     color: var(--white);
 }
 
-a:hover {
-    scale: 1.05;
-}
-
-#seeGroups {
+.seeGroups {
     background-color: none;
     background: none;
     font-size: 1rem;
@@ -35,7 +32,7 @@ a:hover {
     text-decoration: none;
 }
 
-#seeGroups:hover {
+.seeGroups:hover {
     scale: 1.05;
     cursor: pointer;
 }

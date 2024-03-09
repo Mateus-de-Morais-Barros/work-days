@@ -8,25 +8,25 @@
     {% block style %}{% endblock %}
 </head>
 <body>
-    <nav id="base_nav">
-        <a id="home_button" href="{{url_for('index')}}">Home</a>
+    <nav class="base_nav">
+        <a class="nav_link" href="{{url_for('index')}}">Home</a>
         
     {% if g.user %}
-    <ul id="userbox">
+    <ul class="userbox">
         {% if g.user %}
-            <p class="nav_username">{{ g.user['username'] }}</p>
-            <a class="nav_username" href="{{url_for('auth.logout')}}">Log Out</a>
+            <p class="nav_link">{{ g.user['username'] }}</p>
+            <a class="nav_link" href="{{url_for('auth.logout')}}">Log Out</a>
         {% endif %}
     </ul>
     {% else %}
-    <div id="redirect">
-        <a class="index_redirect" href="{{url_for('auth.register')}}">Register</a>
-        <a class="index_redirect" href="{{url_for('auth.login')}}">Login</a>
+    <div class="redirect">
+        <a class="nav_link" href="{{url_for('auth.register')}}">Register</a>
+        <a class="nav_link" href="{{url_for('auth.login')}}">Login</a>
     </div>
     {% endif %}
 
     </nav>
-    <section id="main_section">
+    <section class="main_section">
         {% block content %}{% endblock %}
     </section>
 </body>

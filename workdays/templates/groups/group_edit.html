@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='group_edit.css') }}">{% endblock %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+    <form class="group_edit" method="POST">
+            <div class="small column_display">
+                <h1>Group 1</h1>
+                <p>text_text_text_text_text_text_text_text_text_text_text_text_text_text</p>
+            </div>
+            <div class="big column_display">
+                <h2>February</h2>
+                <table>
+                    <th>domingo</th><th>segunda</th><th>terça</th><th>quarta</th><th>quinta</th><th>sexta</th><th>sabado</th>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+                </table>
+            </div>
+            <div class="small_2 column_display">
+                <h3>Create / Edit</h3>
+                <input type="text" name="name" placeholder="name">
+                <input type="date" name="days" placeholder="days">
+                <button type="submit">add</button>
+            </div>
+            <div class="big_2 column_display">
+                <p class="text_output">text_text_text_text_text_text_text_text_text_text_text_text_text_text_text</p>
+            </div>
+    </form>
+{% endblock %}
+

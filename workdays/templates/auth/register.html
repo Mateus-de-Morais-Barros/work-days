@@ -5,11 +5,13 @@
 {% block title %}Register{% endblock %}
 
 {% block content%}
+<div class="inner_section">
     <form class="auth_section" method="post">
         <label for="username">Username</label>
-        <input name="username" id="username" required>
+        <input name="username" class="username" required>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        <button type="submit" id="submit">Register</button>
+        <input type="password" name="password" class="password" required>
+        <button type="submit" class="submit">Register</button>
     </form>
+</div>
 {% endblock %}

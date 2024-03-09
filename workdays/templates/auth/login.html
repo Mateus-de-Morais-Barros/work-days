@@ -5,11 +5,13 @@
 {% block title %}Login{% endblock %}
 
 {% block content%}
+<div class="inner_section">
     <form class="auth_section" method="POST">
         <label for="username">Username</label>
-        <input name="username" id="username" required>
+        <input name="username" class="username" required>
         <label for="password">Password</label>
         <input type="password" name="password">
-        <button type="submit" id="submit">Login</button>
+        <button type="submit" class="submit">Login</button>
     </form>
+</div>
 {% endblock %}

@@ -1,7 +1,9 @@
 :root {
+    --white: #f9f9f9;
     --black: #110F0D;
     --grey: #222222;
-    --white: #f9f9f9
+    --grey_light: #353535;
+    --grey_dark:#1A1A1A;
 }
 
 
@@ -18,19 +20,28 @@ body {
     font-size: 62.5%;
 }
 
-#main_section {
-    background-color: var(--black);
-    color: var(--white);
+.main_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    height: 100svh;
+    width: 100svw;
+    align-content: center;
+}
+
+.inner_section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0;
-    padding: 0;
-    height: 100svh;
+    height: 100%;
+    width: 100%;
 }
 
-#base_nav {
+
+.base_nav {
     position:fixed;
     top: 0;
     right: 0;
@@ -41,9 +52,10 @@ body {
     padding-inline: 2rem;
     background-color: var(--grey);
     height: 3rem;
+    border-bottom: 1px solid var(--grey_light);
 }
 
-#home_button, #nav_username {
+.nav_link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,12 +65,12 @@ body {
     color: var(--white);
 }
 
-#home_button:hover {
-    scale: 1.05;
+.nav_link:hover {
+    scale: 1.02;
 }
 
 
-#redirect, #userbox {
+.redirect, .userbox {
     display: flex;
     align-items: center;
     height: auto;
@@ -68,8 +80,3 @@ body {
     gap: 4rem;
 }
 
-.nav_username {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 1.5rem;
-}

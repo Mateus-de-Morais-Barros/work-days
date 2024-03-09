@@ -18,9 +18,13 @@ def index():
     # ).fetchall()
     return render_template('/index.html')
 
-@bp.route('/dashboard')
-def dashboard():
-    return render_template('/groups/dashboard.html')
+@bp.route('/group_selection')
+def group_selection():
+    return render_template('/groups/group_selection.html')
+
+@bp.route('/group_edit')
+def group_edit():
+    return render_template('/groups/group_edit.html')
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required

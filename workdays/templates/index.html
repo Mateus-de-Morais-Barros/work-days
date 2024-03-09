@@ -5,6 +5,8 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content%}
-    <h1 id="title">Welcome to Work Days</h1>
-    <a id="seeGroups" href="{{ url_for('main.dashboard') }}">Go to my groups</a>
+    <div class="inner_section">
+        <h1 class="title">Welcome to Work Days</h1>
+        <a class="seeGroups" href="{{ url_for('main.group_selection') }}">Go to my groups</a>
+    </div>
 {% endblock %}
