@@ -1,11 +1,3 @@
-:root {
-    --white: #f9f9f9;
-    --black: #110F0D;
-    --grey: #222222;
-    --grey_light: #353535;
-    --grey_dark:#1A1A1A;
-}
-
 .title {
     font-size: 2.5rem;
     margin-bottom: 3rem;

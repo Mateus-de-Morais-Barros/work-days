@@ -1,20 +1,12 @@
-:root {
-    --white: #f9f9f9;
-    --black: #110F0D;
-    --grey: #222222;
-    --grey_light: #353535;
-    --grey_dark:#1A1A1A;
-}
-
 .auth_section {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--white);
+    border: 1px solid var(--grey_light);
     height: auto;
     width: auto;
-    border-radius: 1rem;
     padding: 2rem;
     gap: 1rem;
+    background-color: var(--grey_dark);
 }
 
 label {
@@ -26,6 +18,8 @@ label {
     height: 2rem;
     width: 100%;
     background-color: var(--white);
+    color: var(--black);
+    font-weight: 700;
     border: none;
     border-radius: 0.1rem;
 }

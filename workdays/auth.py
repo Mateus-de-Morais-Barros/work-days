@@ -17,10 +17,6 @@ def register():
         db = get_db()
         error = None
 
-        # alerta loucura
-        with open('./test/test.txt','w') as f:
-            f.write(f'{username}, {password}')
-
         if not username:
             error = 'Username is required.'
         elif not password:

@@ -8,11 +8,9 @@
     <div class="group_selection">
         <h1 class="title">My Groups</h1>
         <div class="group_list">
-            <a class="group_item" href="{{url_for('main.group_edit')}}">item 1</a>
-            <a class="group_item" href="{{url_for('main.group_edit')}}">item 2</a>
-            <a class="group_item" href="{{url_for('main.group_edit')}}">item 3</a>
-            <a class="group_item" href="{{url_for('main.group_edit')}}">item 4</a>
-            <a class="group_item" href="{{url_for('main.group_edit')}}">item 5</a>
+            {% for row in row_list %}
+            <a class="group_item" href="{{url_for('main.group_edit')}}">{{row}}</a>
+            {% endfor %}
             <a class="add_group" href="{{url_for('main.group_edit')}}">+</a>
         </div>    
     </div>

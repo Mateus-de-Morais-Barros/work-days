@@ -5,22 +5,30 @@ from werkzeug.exceptions import abort
 
 from workdays.auth import login_required
 from workdays.db import get_db
+import json
 
 bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    # db = get_db()
-    # posts = db.execute(
-    #     'SELECT p.id, title, body, created, author_id, username'
-    #     ' FROM post p JOIN user u ON p.author_id = u.id'
-    #     ' ORDER BY created DESC'
-    # ).fetchall()
     return render_template('/index.html')
 
 @bp.route('/group_selection')
 def group_selection():
-    return render_template('/groups/group_selection.html')
+    db = get_db()
+    data = db.execute("SELECT * FROM groups").fetchall()
+    
+    row_list = []
+    for row in data:
+        json_loaded = json.loads(row[2])
+        groups = json_loaded.get("groups")
+        for group in groups:
+            row_list.append(group["group_name"])
+
+    return render_template('/groups/group_selection.html', row_list=row_list)
+
+
+
 
 @bp.route('/group_edit')
 def group_edit():
