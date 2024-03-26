@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='group_edit.css') }}">{% endblock %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+    <form class="selection" method="POST">
+        <input class="transparent_input title" type="text" value="{{group_name}}">
+        <div class="list">
+            <input type="text" name="member_name" placeholder="{{selected_member}}" value="{{selected_member}}">
+            <input type="date" name="days" placeholder="days">
+            <button type="submit">Done</button>
+        </div>    
+    </form>
+{% endblock %}
+
