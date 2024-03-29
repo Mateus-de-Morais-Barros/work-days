@@ -4,8 +4,7 @@ from flask import (
 from werkzeug.exceptions import abort
 
 from workdays.auth import login_required
-from workdays.db import get_db
-from workdays.crud import get_group_names
+from workdays.crud import get_group_names , get_member_names, delete_group, delete_member
 
 bp = Blueprint('main', __name__)
 
@@ -25,37 +24,46 @@ def group_selection():
 @login_required
 def g_create():
     # data gathering
-    group_name = request.args.get("group_name")
-    user_id = session['user_id']
-    group = get_group(user_id, group_name)
+    group_name = request.args.get("resource")
     
-    # assign the selected member to the variable
-    try:
-        selected_member = request.form['selected_option']
-        return render_template('/groups/g_create.html', group_name=group_name, group=group, selected_member=selected_member)
-    except:
-        pass
+    if group_name == "New Group":
+        members = []
+        return render_template('/groups/g_create.html', group_name=group_name, members=members)
     
-    return render_template('/groups/g_create.html', group_name=group_name, group=group)
+    
+    members = get_member_names(group_name)
+    return render_template('/groups/g_create.html', group_name=group_name, members=members)
 
-@bp.route('/g_update', methods=('GET','POST'))
+
+@bp.route('/m_create', methods=('GET','POST'))
 @login_required
-def g_update():
+def m_create():
     # data gathering
-    group_name = request.args.get("group_name")
-    user_id = session['user_id']
-    group = get_group(user_id, group_name)
+    group_name = request.args.get("resource")
     
-    # assign the selected member to the variable
-    try:
-        selected_member = request.form['selected_option']
-        return render_template('/groups/g_update.html', group_name=group_name, group=group, selected_member=selected_member)
-    except:
-        pass
+    if group_name == "New Group":
+        members = []
+        return render_template('/groups/m_create.html', group_name=group_name, members=members)
     
-    return render_template('/groups/g_update.html', group_name=group_name, group=group)
+    
+    members = get_member_names(group_name)
+    return render_template('/groups/m_create.html', group_name=group_name, members=members)
 
 
+@bp.route('/g_delete', methods=('GET','POST'))
+@login_required
+def g_delete():
+    # data gathering
+    resource = request.args.get("resource")
+    mode = request.args.get("mode")
+    
+    if mode == "group":
+        delete_group(resource)
+        return group_selection()
+    
+    if mode == "member":
+        delete_member(resource)
+        return g_create()
 
 # logic    ----------------------------------------------
 

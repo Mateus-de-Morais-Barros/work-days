@@ -1,17 +1,20 @@
 {% extends 'layout.html' %}
 
-{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='group_edit.css') }}">{% endblock %}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='selection.css') }}">{% endblock %}
 
 {% block title %}Edit{% endblock %}
 
 {% block content %}
-    <form class="selection" method="POST">
-        <input class="transparent_input title" type="text" value="{{group_name}}">
+    <form class="selection">
+        <input class="transparent_input title" type="text" value="{{group_name.title()}}">
         <div class="list">
-            <input type="text" name="member_name" placeholder="{{selected_member}}" value="{{selected_member}}">
-            <input type="date" name="days" placeholder="days">
-            <button type="submit">Done</button>
+            {% for member in members %}
+            <div class="item">
+                <a class="name" href="{{url_for('main.g_create', resource=member)}}">{{member}}</a>
+                <a href="{{url_for('main.g_delete', resource=member, mode='member')}}"><img src="{{url_for('static', filename='delete.svg')}}" alt="delete"></a>
+            </div>
+            {% endfor %}
+            <a class="name" href="{{url_for('main.m_create', resource='New Member')}}">+</a>
         </div>    
     </form>
 {% endblock %}
-

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='selection.css') }}">{% endblock %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+    <form class="selection">
+        <input class="transparent_input title" type="text" value="{{group_name}}">
+        <div class="list">
+            {% for member in members %}
+            <div class="item">
+                <a class="name" href="{{url_for('main.m_create', member=member)}}">{{member}}</a>
+                <a href="{{url_for('main.m_delete', member=member)}}"><img src="{{url_for('static', filename='delete.svg')}}" alt="delete"></a>
+            </div>
+            {% endfor %}
+        </div>    
+    </form>
+{% endblock %}

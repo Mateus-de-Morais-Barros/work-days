@@ -1,8 +1,10 @@
 .title {
     font-size: 2.5rem;
+    font-weight: bold;
+    margin-block: 2rem;
 }
 
-.group_selection {
+.selection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,12 +13,12 @@
     padding-inline: 2rem;
     padding-bottom: 2rem;
     height: fit-content;
-    width: 15rem;
+    width: fit-content;
     border: 1px solid var(--grey_light);
     background-color: var(--grey_dark);
 }
 
-.group_list {
+.list {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,18 +27,40 @@
     height: auto;
 }
 
-.group_item, .add_group {
+.name, .add_group, .item {
     display: flex;
     justify-content: center;
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--white);
     margin-bottom: 1rem;
-    width: 8rem;
+    width: fit-content;
     height: 2.5rem;
-    border-bottom: 1px solid var(--grey_light);
+    gap: 2rem;
 }
 
 .add_group {
     border: none;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    width: fit-content;
+    height: 2.5rem;
+    border-bottom: 1px solid var(--grey_light);
+    gap: 2rem;
+}
+
+.transparent_input {
+    background: none;
+    background-color: none;
+    border: none;
+    color: var(--white);
+    width: inherit;
+    text-align: center;
 }
