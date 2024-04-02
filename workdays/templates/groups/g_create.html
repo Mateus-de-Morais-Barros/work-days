@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='selection.css') }}">{% endblock %}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">{% endblock %}
 
 {% block title %}Edit{% endblock %}
 
@@ -10,7 +10,10 @@
         <div class="list">
             {% for member in members %}
             <div class="item">
-                <a class="name" href="{{url_for('main.g_create', resource=member)}}">{{member}}</a>
+                <input class="transparent_input name" type="text" value="{{member['name']}}">
+                <input class="transparent_input days" type="text" value="{{member['days_list']}}">
+                <input class="transparent_input days" type="text" value="{{member['preference_list']}}">
+
                 <a href="{{url_for('main.g_delete', resource=member, mode='member')}}"><img src="{{url_for('static', filename='delete.svg')}}" alt="delete"></a>
             </div>
             {% endfor %}

@@ -1,0 +1,76 @@
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-block: 2rem;
+}
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-inline: 2rem;
+    padding-bottom: 2rem;
+    height: fit-content;
+    width: fit-content;
+    border: 1px solid var(--grey_light);
+    background-color: var(--grey_dark);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.name, .add_group, .item {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    width: fit-content;
+    height: 2.5rem;
+    gap: 2rem;
+}
+
+.add_group {
+    border: none;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    padding-inline: 1rem;
+    width: inherit;
+    height: 2.5rem;
+    border-bottom: 1px solid var(--grey_light);
+    gap: 2rem;
+}
+
+.transparent_input {
+    background: none;
+    background-color: none;
+    border: none;
+    color: var(--white);
+    width: inherit;
+    text-align: center;
+}
+
+input:focus {
+    outline: 1px solid var(--white);
+}
+
+.days {
+    font-size: 1rem;
+    color: var(--white);
+}

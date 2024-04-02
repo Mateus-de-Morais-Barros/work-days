@@ -1,52 +1,44 @@
 from workdays.db import get_db
 from flask import session, request
+import json
 
 # returns all groups of the logged user
-def get_group():
+def get_groups():
     user_id = session['user_id']
     conn = get_db()
     allrows = conn.execute('''
                  SELECT * FROM groups WHERE user_id=?''', (user_id,)).fetchall()
     return allrows
 
-# returns a list of groups names
-def get_group_names():
-    allrows = get_group()
-    group_name = [row[1] for row in allrows]
-    return group_name
+# returns a blob string from a row
+def load_blob(row):
+    blob = json.loads(row[2])
+    return blob
 
-# returns a list of member id's
-def get_member_ids(group_name):
-    user_id = session['user_id']
+# returns a list of dicts
+def load_groups():
+    allrows = get_groups()
+    dict_list = []
+    for row in allrows:
+        dict_list.append(load_blob(row))
+    return dict_list 
+
+# returns only the selected group
+def select_group(group_name):
+    groups = load_groups()
+    for group in groups:
+        if group["name"] == group_name:
+            print(group)
+            return group
+
+def stringfy_list(mylist):
+    string = ','.join(mylist)
+    return string
+
+
+
     
-    conn = get_db()
-    members_id = conn.execute('''
-                 SELECT members_id FROM groups WHERE user_id=? AND group_name=?''', (user_id, group_name,)).fetchone()
-    try:
-        members_id = [int(x) for x in members_id[0].split(',')]
-    except:
-        members_id = []
-        
-    return members_id
-
-def update_member_ids():
-    pass
-
-# returns a list of member names
-def get_member_names(group_name):
-    members_id = get_member_ids(group_name)
-    m_id_list = []
-    for m_id in members_id:
-        conn = get_db()
-        try:
-            row = conn.execute('''
-                        SELECT * FROM members WHERE id=?''', (m_id,)).fetchone()
-            m_id_list.append(row[1])
-        except:
-            continue
-    print(m_id_list)
-    return m_id_list
-
+    
 # deletes a group and its members
 def delete_group(resource):
     conn = get_db()
@@ -71,6 +63,4 @@ def delete_member(resource):
     conn.execute("""
                 DELETE FROM members WHERE name=?""", (resource,))
     conn.commit()
-    
-    
     

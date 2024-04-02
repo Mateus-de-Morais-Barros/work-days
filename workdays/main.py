@@ -4,7 +4,7 @@ from flask import (
 from werkzeug.exceptions import abort
 
 from workdays.auth import login_required
-from workdays.crud import get_group_names , get_member_names, delete_group, delete_member
+from workdays.crud import load_groups, delete_group, delete_member, select_group, stringfy_list 
 
 bp = Blueprint('main', __name__)
 
@@ -15,7 +15,8 @@ def index():
 @bp.route('/group_selection')
 @login_required
 def group_selection():
-    group_names = get_group_names()
+    dict_list = load_groups()
+    group_names = [name['name'] for name in dict_list]
     
     return render_template('/groups/group_selection.html', group_names=group_names)
 
@@ -25,13 +26,21 @@ def group_selection():
 def g_create():
     # data gathering
     group_name = request.args.get("resource")
+    group = select_group(group_name)
+    
+    members = []
+    for member in group["members"]:
+        member['days_list'] = stringfy_list(member['days'])
+        member['preference_list'] = stringfy_list(member['preference'])
+        members.append(member)
+
+    
     
     if group_name == "New Group":
         members = []
         return render_template('/groups/g_create.html', group_name=group_name, members=members)
-    
-    
-    members = get_member_names(group_name)
+
+    # members = get_member_names(group_name)
     return render_template('/groups/g_create.html', group_name=group_name, members=members)
 
 
@@ -40,13 +49,14 @@ def g_create():
 def m_create():
     # data gathering
     group_name = request.args.get("resource")
-    
+    members = []
+
     if group_name == "New Group":
         members = []
         return render_template('/groups/m_create.html', group_name=group_name, members=members)
     
     
-    members = get_member_names(group_name)
+    # members = get_member_names(group_name)
     return render_template('/groups/m_create.html', group_name=group_name, members=members)
 
 
