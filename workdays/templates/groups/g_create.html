@@ -5,19 +5,22 @@
 {% block title %}Edit{% endblock %}
 
 {% block content %}
-    <form class="selection">
-        <input class="transparent_input title" type="text" value="{{group_name.title()}}">
+    <form class="selection" action="#" method="POST">
+        <input class="transparent_input title" type="text" name="group_name" value="{{group['name']}}">
         <div class="list">
             {% for member in members %}
             <div class="item">
-                <input class="transparent_input name" type="text" value="{{member['name']}}">
-                <input class="transparent_input days" type="text" value="{{member['days_list']}}">
-                <input class="transparent_input days" type="text" value="{{member['preference_list']}}">
-
+                <input class="transparent_input name" type="text" name="member_name_{{members.index(member)}}" value="{{member['name']}}">
+                <input class="transparent_input days" type="text" name="member_days_{{members.index(member)}}" value="{{member['days_list']}}">
+                <input class="transparent_input days" type="text" name="member_pref_{{members.index(member)}}" value="{{member['preference_list']}}">
                 <a href="{{url_for('main.g_delete', resource=member, mode='member')}}"><img src="{{url_for('static', filename='delete.svg')}}" alt="delete"></a>
             </div>
             {% endfor %}
             <a class="name" href="{{url_for('main.m_create', resource='New Member')}}">+</a>
-        </div>    
+        </div>   
+        <div class="submit">
+            <input type="button" value="Back">
+            <input type="submit" value="Done">
+        </div> 
     </form>
 {% endblock %}

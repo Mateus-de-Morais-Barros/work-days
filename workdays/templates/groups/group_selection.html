@@ -8,13 +8,18 @@
     <div class="selection">
         <p class="title">My Groups</p>
         <div class="list">
-            {% for group_name in group_names %}
+            {% for group in groups %}
             <div class="item">
-                <a class="name" href="{{url_for('main.g_create', resource=group_name)}}">{{group_name.title()}}</a>
+                <a class="name" href="{{url_for('main.g_create', group_id=group['id'])}}">{{group['name']}}</a>
                 <a href="{{url_for('main.g_delete', resource=group_name, mode='group')}}"><img src="{{url_for('static', filename='delete.svg')}}" alt="delete"></a>
             </div>
             {% endfor %}
-            <a class="name" href="{{url_for('main.g_create', resource='New Group')}}" value="create">+</a>
+            <a class="name" href="{{url_for('main.g_create', resource='New Group')}}">+</a>
         </div>    
+        <div class="submit">
+            <input type="button" value="Back">
+            <input type="button" value="Done">
+            <a class="name" href="{{url_for('main.g_create', group='New Group')}}">donedonedone</a>
+        </div>
     </div>
 {% endblock %}

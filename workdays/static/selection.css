@@ -45,12 +45,12 @@
 
 .item {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--white);
     margin-bottom: 1rem;
-    width: fit-content;
+    width: inherit;
     height: 2.5rem;
     border-bottom: 1px solid var(--grey_light);
     gap: 2rem;
@@ -63,4 +63,14 @@
     color: var(--white);
     width: inherit;
     text-align: center;
+}
+
+.submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 10rem;
+    height: fit-content;
 }

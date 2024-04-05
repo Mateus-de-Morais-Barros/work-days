@@ -24,43 +24,48 @@ def load_groups():
     return dict_list 
 
 # returns only the selected group
-def select_group(group_name):
-    groups = load_groups()
-    for group in groups:
-        if group["name"] == group_name:
-            print(group)
-            return group
+def select_group(group_id):
+    conn = get_db()
+    row = conn.execute('''
+                 SELECT * FROM groups WHERE id=?''', (group_id,)).fetchone()
+    
+    group = load_blob(row)
+    
+    return group
+
 
 def stringfy_list(mylist):
-    string = ','.join(mylist)
+
+    string = ', '.join(mylist)
     return string
 
 
+    
+    
+# # deletes a group and its members
+# def delete_group(resource):
+#     conn = get_db()
+#     print("deleting " + resource)
+#     user_id = session['user_id']
+    
+#     # deletes all members
+#     member_ids = get_member_ids(resource)
+#     for m_id in member_ids:
+#         conn.execute("""
+#                 DELETE FROM members WHERE id=?""", (m_id,))
+#     # deletes the group
+#     conn.execute("""
+#                 DELETE FROM groups WHERE user_id=? AND group_name=?""", (user_id, resource,))
+    
+#     conn.commit()
 
-    
-    
-# deletes a group and its members
-def delete_group(resource):
-    conn = get_db()
-    print("deleting " + resource)
-    user_id = session['user_id']
-    
-    # deletes all members
-    member_ids = get_member_ids(resource)
-    for m_id in member_ids:
-        conn.execute("""
-                DELETE FROM members WHERE id=?""", (m_id,))
-    # deletes the group
-    conn.execute("""
-                DELETE FROM groups WHERE user_id=? AND group_name=?""", (user_id, resource,))
-    
-    conn.commit()
-
-# deletes a member
-def delete_member(resource):
+# # deletes a member
+# def delete_member(resource):
     conn = get_db()
     # deletes a member
     conn.execute("""
                 DELETE FROM members WHERE name=?""", (resource,))
     conn.commit()
-    
+   
+   
+ 
