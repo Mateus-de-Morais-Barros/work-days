@@ -8,7 +8,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE groups (
-    id integer primary key autoincrement,
+    id integer primary key,
     user_id integer not null,
     blob blob not null,
     foreign key (user_id) references users (id)

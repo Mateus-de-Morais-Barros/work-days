@@ -8,6 +8,11 @@
     <form class="selection" action="#" method="POST">
         <input class="transparent_input title" type="text" name="group_name" value="{{group['name']}}">
         <div class="list">
+            <div class="table_header">
+                <p class="name">Member</p>
+                <p class="name">Avaiable days</p>
+                <p class="name">Preference</p>
+            </div>
             {% for member in members %}
             <div class="item">
                 <input class="transparent_input name" type="text" name="member_name_{{members.index(member)}}" value="{{member['name']}}">
@@ -19,8 +24,9 @@
             <a class="name" href="{{url_for('main.m_create', resource='New Member')}}">+</a>
         </div>   
         <div class="submit">
-            <input type="button" value="Back">
-            <input type="submit" value="Done">
+            <a class="name button_edit" href="{{ url_for('main.group_selection') }}">Back</a>
+            <input class="name button_edit" type="submit" value="Done">
         </div> 
+        <input type="text" name="id" style="display: none;" value="{{group['id']}}">
     </form>
 {% endblock %}

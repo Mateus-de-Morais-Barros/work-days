@@ -74,3 +74,8 @@
     width: 10rem;
     height: fit-content;
 }
+
+.button_back {
+    margin-inline: auto;
+    text-decoration: underline;
+}

@@ -74,3 +74,32 @@ input:focus {
     font-size: 1rem;
     color: var(--white);
 }
+
+.table_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    padding-inline: 1rem;
+    width: inherit;
+    border-bottom: 1px solid var(--grey_light);
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.button_edit {
+    margin-inline: auto;
+    text-decoration: underline;
+    background: none;
+    border: none; 
+    cursor: pointer;
+    margin: auto;
+}
